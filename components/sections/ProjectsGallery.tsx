@@ -4,6 +4,12 @@ import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useMemo, useState } from "react";
 
 import { projects } from "@/constants/projects";
+import EarbudShowcase from "@/components/spatial-product-showcase";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import type { ProjectCategory } from "@/types/project";
 
 const categories: Array<ProjectCategory | "All"> = ["All", "AI", "Web", "Design"];
@@ -12,11 +18,27 @@ export function ProjectsGallery() {
   const [activeCategory, setActiveCategory] = useState<
     ProjectCategory | "All"
   >("All");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[number] | null
+  >(null);
 
   const filtered = useMemo(() => {
     if (activeCategory === "All") return projects;
     return projects.filter((project) => project.category === activeCategory);
   }, [activeCategory]);
+
+  const handleProjectOpen = (project: (typeof projects)[number]) => {
+    setSelectedProject(project);
+    setIsDialogOpen(true);
+  };
+
+  const handleDialogChange = (open: boolean) => {
+    setIsDialogOpen(open);
+    if (!open) {
+      setSelectedProject(null);
+    }
+  };
 
   return (
     <section className="py-16">
@@ -69,7 +91,17 @@ export function ProjectsGallery() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.3 }}
-                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5"
+                  onClick={() => handleProjectOpen(project)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      handleProjectOpen(project);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open ${project.title} preview`}
+                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 cursor-pointer transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-novalis-yellow/60"
                 >
                   <div
                     className="h-44 w-full bg-cover bg-center transition duration-300 group-hover:scale-[1.03]"
@@ -101,6 +133,17 @@ export function ProjectsGallery() {
           </motion.div>
         </LayoutGroup>
       </div>
+
+      <Dialog open={isDialogOpen} onOpenChange={handleDialogChange}>
+        <DialogContent
+          className="left-1/2 top-[12%] max-h-[85vh] w-[min(96vw,1200px)] max-w-6xl translate-x-[-50%] translate-y-0 overflow-y-auto rounded-3xl border border-white/10 bg-black/90 p-0 shadow-2xl backdrop-blur-2xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:slide-in-from-bottom-[45%] data-[state=open]:slide-in-from-right-[35%] data-[state=closed]:slide-out-to-bottom-[45%] data-[state=closed]:slide-out-to-right-[35%] data-[state=open]:duration-500 data-[state=closed]:duration-300"
+        >
+          <DialogTitle className="sr-only">
+            {selectedProject ? `${selectedProject.title} preview` : "Project preview"}
+          </DialogTitle>
+          <EarbudShowcase embedded />
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

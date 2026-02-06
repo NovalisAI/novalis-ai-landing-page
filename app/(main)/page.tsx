@@ -8,7 +8,6 @@ import { GlowButton } from "@/components/ui/GlowButton";
 import GlassmorphismTrustHero from "@/components/glassmorphism-trust-hero";
 import FutureNavbar from "@/components/future-navbar";
 import AboutUsSection from "@/components/about-us-section";
-import HorizonHero from "@/components/horizon-hero-section";
 import EarbudShowcase from "@/components/spatial-product-showcase";
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
 import {
@@ -34,8 +33,8 @@ import { ThreeDMarquee } from "@/components/3d-marquee";
 import { ProcessSection } from "@/components/how-we-do-it-process-overview";
 import Testimonials from "@/components/testimonials";
 import { TeamSection } from "@/components/team-section-1";
-import Stats from "@/components/sections/Stats";
 import Cta from "@/components/sections/Cta";
+import Future from "@/components/sections/Cta";
 
 export default function Home() {
   return (
@@ -48,8 +47,6 @@ export default function Home() {
         {/* <ServicesBento /> */}
 
         <AboutUsSection />
-
-        <HorizonHero />
 
         <RadialOrbitalTimeline
           timelineData={[
@@ -149,7 +146,6 @@ export default function Home() {
             },
           ]}
         />
-        <Stats />
         <Testimonials />
         <TeamSection
           title="CREATIVE TEAM"
@@ -195,8 +191,9 @@ export default function Home() {
             { icon: Youtube, href: "#" },
           ]}
         />
-        <EarbudShowcase />
+        {/* <EarbudShowcase /> */}
         <Cta />
+        <Future />
 
         <ThreeDMarquee images={images} />
       </main>

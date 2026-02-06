@@ -138,8 +138,14 @@ const ANIMATIONS = {
 // 3. SUB-COMPONENTS
 // =========================================
 
-const BackgroundGradient = ({ isLeft }: { isLeft: boolean }) => (
-  <div className="fixed inset-0 pointer-events-none">
+const BackgroundGradient = ({
+  isLeft,
+  scoped = false,
+}: {
+  isLeft: boolean;
+  scoped?: boolean;
+}) => (
+  <div className={`${scoped ? "absolute" : "fixed"} inset-0 pointer-events-none`}>
     <motion.div
       animate={{
         background: isLeft
@@ -365,15 +371,25 @@ const Switcher = ({
 // 4. MAIN COMPONENT
 // =========================================
 
-export default function EarbudShowcase() {
+interface EarbudShowcaseProps {
+  embedded?: boolean;
+}
+
+export default function EarbudShowcase({
+  embedded = false,
+}: EarbudShowcaseProps) {
   const [activeSide, setActiveSide] = useState<ProductId>("left");
 
   const currentData = PRODUCT_DATA[activeSide];
   const isLeft = activeSide === "left";
 
   return (
-    <div className="relative min-h-screen w-full bg-black text-zinc-100 overflow-hidden selection:bg-zinc-800 flex flex-col items-center justify-center">
-      <BackgroundGradient isLeft={isLeft} />
+    <div
+      className={`relative w-full bg-black text-zinc-100 overflow-hidden selection:bg-zinc-800 flex flex-col items-center justify-center ${
+        embedded ? "min-h-[70vh]" : "min-h-screen"
+      }`}
+    >
+      <BackgroundGradient isLeft={isLeft} scoped={embedded} />
 
       <main className="relative z-10 w-full px-6 py-8 flex flex-col justify-center max-w-7xl mx-auto">
         <motion.div

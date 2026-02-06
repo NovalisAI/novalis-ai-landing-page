@@ -53,6 +53,9 @@
   --text-200: #e4e4e7;
   --text-300: #a1a1aa;
   --text-400: #71717a;
+  --gradient-start: #ff00c8;
+  --gradient-mid: #00ffc8;
+  --gradient-end: #ff00c8;
 }
 
 @theme inline {
@@ -114,6 +117,9 @@
   --color-bg-200: var(----bg-200);
   --color-bg-100: var(----bg-100);
   --color-bg-0: var(----bg-0);
+  --color-gradient-end: var(----gradient-end);
+  --color-gradient-mid: var(----gradient-mid);
+  --color-gradient-start: var(----gradient-start);
   @keyframes fadeSlideIn {
     from {
       opacity: 0;
@@ -130,6 +136,24 @@
     }
   50% {
     transform: translateY(-10px);
+    }
+  }
+  @keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+    }
+  100% {
+    background-position: 200% 50%;
+    }
+  }
+  @keyframes text-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
     }
   }
 }
@@ -200,6 +224,9 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --gradient-start: #ff00c8;
+  --gradient-mid: #00ffc8;
+  --gradient-end: #ff00c8;
 }
 
 @layer base {

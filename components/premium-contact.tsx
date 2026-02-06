@@ -1,21 +1,22 @@
-import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  User, 
-  MessageSquare, 
-  Building, 
+"use client";
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  User,
+  MessageSquare,
+  Building,
   ArrowRight,
   Sparkles,
   CheckCircle,
   Clock,
   Globe,
   Shield,
-  Zap
-} from 'lucide-react';
+  Zap,
+} from "lucide-react";
 
 const contactMethods = [
   {
@@ -25,7 +26,7 @@ const contactMethods = [
     value: "dhileepkumargm@21st.dev",
     link: "mailto:dhileepkumargm@gmail.com",
     gradient: "from-blue-500/20 to-cyan-500/20",
-    hoverColor: "blue"
+    hoverColor: "blue",
   },
   {
     icon: Phone,
@@ -34,7 +35,7 @@ const contactMethods = [
     value: "+1 (555) 123-4567",
     link: "tel:+15551234567",
     gradient: "from-green-500/20 to-emerald-500/20",
-    hoverColor: "green"
+    hoverColor: "green",
   },
   {
     icon: MapPin,
@@ -43,23 +44,23 @@ const contactMethods = [
     value: "San Francisco, CA",
     link: "#Europe, Middle East, and Africa (EMEA)",
     gradient: "from-purple-500/20 to-pink-500/20",
-    hoverColor: "purple"
-  }
+    hoverColor: "purple",
+  },
 ];
 
 const companyStats = [
   { label: "Response Time", value: "< 2 hours", icon: Clock },
   { label: "Global Clients", value: "500+", icon: Globe },
   { label: "Security Level", value: "SOC 2", icon: Shield },
-  { label: "Success Rate", value: "99.9%", icon: Zap }
+  { label: "Success Rate", value: "99.9%", icon: Zap },
 ];
 
 export function PremiumContact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
+    name: "",
+    email: "",
+    company: "",
+    message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -67,31 +68,31 @@ export function PremiumContact() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
+      setErrors((prev) => ({ ...prev, [field]: "" }));
     }
   };
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    
+
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     }
-    
+
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = "Please enter a valid email";
     }
-    
+
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
+      newErrors.message = "Message must be at least 10 characters";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -99,24 +100,24 @@ export function PremiumContact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
-        duration: 0.8, 
-        ease: [0.23, 0.86, 0.39, 0.96] 
-      }
-    }
+      transition: {
+        duration: 0.8,
+        ease: [0.23, 0.86, 0.39, 0.96],
+      },
+    },
   };
 
   const staggerContainer = {
@@ -125,9 +126,9 @@ export function PremiumContact() {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   return (
@@ -135,21 +136,21 @@ export function PremiumContact() {
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0">
         {/* Animated gradient mesh */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.08] via-purple-500/[0.05] to-rose-500/[0.08]"
           animate={{
-            backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
+            backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
           }}
           transition={{
             duration: 35,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
           style={{
-            backgroundSize: '400% 400%'
+            backgroundSize: "400% 400%",
           }}
         />
-        
+
         {/* Moving orbs */}
         <motion.div
           className="absolute top-1/3 left-1/5 w-96 h-96 bg-indigo-400/10 rounded-full blur-3xl"
@@ -161,7 +162,7 @@ export function PremiumContact() {
           transition={{
             duration: 30,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         <motion.div
@@ -174,7 +175,7 @@ export function PremiumContact() {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
 
@@ -185,9 +186,9 @@ export function PremiumContact() {
               key={i}
               className="absolute w-px h-40 bg-gradient-to-b from-transparent via-white/20 to-transparent"
               style={{
-                left: `${20 + (i * 15)}%`,
-                top: `${25 + (i * 8)}%`,
-                transform: `rotate(${30 + i * 20}deg)`
+                left: `${20 + i * 15}%`,
+                top: `${25 + i * 8}%`,
+                transform: `rotate(${30 + i * 20}deg)`,
               }}
               animate={{
                 opacity: [0.2, 0.8, 0.2],
@@ -204,7 +205,7 @@ export function PremiumContact() {
         </div>
       </div>
 
-      <motion.div 
+      <motion.div
         ref={containerRef}
         className="relative z-10 max-w-7xl mx-auto px-6"
         variants={staggerContainer}
@@ -213,13 +214,13 @@ export function PremiumContact() {
         viewport={{ once: true, margin: "-100px" }}
       >
         {/* Header */}
-        <motion.div 
-          className="text-center mb-20"
-          variants={fadeInUp}
-        >
+        <motion.div className="text-center mb-20" variants={fadeInUp}>
           <motion.div
             className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.08] border border-white/[0.15] backdrop-blur-sm mb-6"
-            whileHover={{ scale: 1.05, borderColor: "rgba(255, 255, 255, 0.3)" }}
+            whileHover={{
+              scale: 1.05,
+              borderColor: "rgba(255, 255, 255, 0.3)",
+            }}
           >
             <motion.div
               animate={{ rotate: 360 }}
@@ -233,7 +234,7 @@ export function PremiumContact() {
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           </motion.div>
 
-          <motion.h2 
+          <motion.h2
             className="text-4xl sm:text-6xl md:text-7xl font-bold mb-8 tracking-tight"
             variants={fadeInUp}
           >
@@ -241,34 +242,35 @@ export function PremiumContact() {
               Get in
             </span>
             <br />
-            <motion.span 
+            <motion.span
               className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-purple-300 to-rose-300"
               animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
               transition={{
                 duration: 5,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
               style={{
-                backgroundSize: '200% 200%'
+                backgroundSize: "200% 200%",
               }}
             >
               Touch
             </motion.span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             className="text-xl sm:text-2xl text-white/60 max-w-4xl mx-auto leading-relaxed"
             variants={fadeInUp}
           >
-            Ready to transform your business with AI? Let's start a conversation about your goals and how we can help you achieve them.
+            Ready to transform your business with AI? Let's start a conversation
+            about your goals and how we can help you achieve them.
           </motion.p>
         </motion.div>
 
         {/* Stats Bar */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
           variants={fadeInUp}
         >
@@ -286,7 +288,9 @@ export function PremiumContact() {
               >
                 <stat.icon className="w-6 h-6 text-indigo-300" />
               </motion.div>
-              <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+              <div className="text-2xl font-bold text-white mb-1">
+                {stat.value}
+              </div>
               <div className="text-white/60 text-sm">{stat.label}</div>
             </motion.div>
           ))}
@@ -294,14 +298,14 @@ export function PremiumContact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <motion.div 
-            className="space-y-8"
-            variants={fadeInUp}
-          >
+          <motion.div className="space-y-8" variants={fadeInUp}>
             <div>
-              <h3 className="text-3xl font-bold text-white mb-4">Send us a message</h3>
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Send us a message
+              </h3>
               <p className="text-white/60 text-lg">
-                Tell us about your project and we'll get back to you within 24 hours.
+                Tell us about your project and we'll get back to you within 24
+                hours.
               </p>
             </div>
 
@@ -322,9 +326,11 @@ export function PremiumContact() {
                         type="text"
                         placeholder="Your Name"
                         value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("name", e.target.value)
+                        }
                         className={`w-full pl-10 pr-4 py-4 bg-white/[0.08] border rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-indigo-400 transition-all ${
-                          errors.name ? 'border-red-400' : 'border-white/[0.15]'
+                          errors.name ? "border-red-400" : "border-white/[0.15]"
                         }`}
                       />
                       {errors.name && (
@@ -344,9 +350,13 @@ export function PremiumContact() {
                         type="email"
                         placeholder="Email Address"
                         value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("email", e.target.value)
+                        }
                         className={`w-full pl-10 pr-4 py-4 bg-white/[0.08] border rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-indigo-400 transition-all ${
-                          errors.email ? 'border-red-400' : 'border-white/[0.15]'
+                          errors.email
+                            ? "border-red-400"
+                            : "border-white/[0.15]"
                         }`}
                       />
                       {errors.email && (
@@ -367,7 +377,9 @@ export function PremiumContact() {
                       type="text"
                       placeholder="Company (Optional)"
                       value={formData.company}
-                      onChange={(e) => handleInputChange('company', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("company", e.target.value)
+                      }
                       className="w-full pl-10 pr-4 py-4 bg-white/[0.08] border border-white/[0.15] rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-indigo-400 transition-all"
                     />
                   </div>
@@ -378,9 +390,13 @@ export function PremiumContact() {
                       placeholder="Tell us about your project..."
                       rows={6}
                       value={formData.message}
-                      onChange={(e) => handleInputChange('message', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("message", e.target.value)
+                      }
                       className={`w-full pl-10 pr-4 py-4 bg-white/[0.08] border rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-indigo-400 transition-all resize-none ${
-                        errors.message ? 'border-red-400' : 'border-white/[0.15]'
+                        errors.message
+                          ? "border-red-400"
+                          : "border-white/[0.15]"
                       }`}
                     />
                     {errors.message && (
@@ -412,7 +428,11 @@ export function PremiumContact() {
                         <motion.div
                           className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
                         />
                       ) : (
                         <>
@@ -439,14 +459,22 @@ export function PremiumContact() {
                   >
                     <CheckCircle className="w-10 h-10 text-green-400" />
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    Message Sent!
+                  </h3>
                   <p className="text-white/60 text-lg mb-6">
-                    Thank you for reaching out. We'll get back to you within 24 hours.
+                    Thank you for reaching out. We'll get back to you within 24
+                    hours.
                   </p>
                   <motion.button
                     onClick={() => {
                       setIsSubmitted(false);
-                      setFormData({ name: '', email: '', company: '', message: '' });
+                      setFormData({
+                        name: "",
+                        email: "",
+                        company: "",
+                        message: "",
+                      });
                     }}
                     className="px-6 py-3 bg-white/[0.08] border border-white/[0.15] rounded-xl text-white hover:bg-white/[0.12] transition-all"
                     whileHover={{ scale: 1.05 }}
@@ -460,12 +488,11 @@ export function PremiumContact() {
           </motion.div>
 
           {/* Contact Methods */}
-          <motion.div 
-            className="space-y-8"
-            variants={fadeInUp}
-          >
+          <motion.div className="space-y-8" variants={fadeInUp}>
             <div>
-              <h3 className="text-3xl font-bold text-white mb-4">Other ways to reach us</h3>
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Other ways to reach us
+              </h3>
               <p className="text-white/60 text-lg">
                 Choose the method that works best for you.
               </p>
@@ -489,8 +516,12 @@ export function PremiumContact() {
                       <method.icon className="w-7 h-7 text-white" />
                     </motion.div>
                     <div className="flex-1">
-                      <h4 className="text-xl font-semibold text-white mb-1">{method.title}</h4>
-                      <p className="text-white/60 text-sm mb-2">{method.description}</p>
+                      <h4 className="text-xl font-semibold text-white mb-1">
+                        {method.title}
+                      </h4>
+                      <p className="text-white/60 text-sm mb-2">
+                        {method.description}
+                      </p>
                       <p className="text-white font-medium">{method.value}</p>
                     </div>
                     <ArrowRight className="w-5 h-5 text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
@@ -504,10 +535,14 @@ export function PremiumContact() {
               className="p-6 bg-gradient-to-br from-indigo-500/[0.08] to-purple-500/[0.08] backdrop-blur-xl rounded-2xl border border-indigo-400/30"
               variants={fadeInUp}
             >
-              <h4 className="text-lg font-semibold text-white mb-3">Quick Response Guarantee</h4>
+              <h4 className="text-lg font-semibold text-white mb-3">
+                Quick Response Guarantee
+              </h4>
               <p className="text-white/80 text-sm leading-relaxed">
-                We pride ourselves on rapid response times. All inquiries are typically answered within 2 hours during business hours, 
-                and we'll schedule a call within 24 hours to discuss your project in detail.
+                We pride ourselves on rapid response times. All inquiries are
+                typically answered within 2 hours during business hours, and
+                we'll schedule a call within 24 hours to discuss your project in
+                detail.
               </p>
             </motion.div>
           </motion.div>
@@ -519,8 +554,8 @@ export function PremiumContact() {
             key={i}
             className="absolute w-2 h-2 bg-white/20 rounded-full"
             style={{
-              left: `${10 + (i * 12)}%`,
-              top: `${20 + (i * 10)}%`,
+              left: `${10 + i * 12}%`,
+              top: `${20 + i * 10}%`,
             }}
             animate={{
               y: [0, -40, 0],

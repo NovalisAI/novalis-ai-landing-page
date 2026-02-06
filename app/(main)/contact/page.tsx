@@ -1,5 +1,5 @@
+import { PremiumContact } from "@/components/premium-contact";
 import React from "react";
-import { PremiumContact } from "@/components/ui/premium-contact";
 
 /**
  * Demo component to showcase the ContactSection.

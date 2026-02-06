@@ -1,26 +1,8 @@
+"use client";
 import React, { useRef, useEffect, useState } from "react";
 
 // Types for component props
 interface HeroProps {
-  trustBadge?: {
-    text: string;
-    icons?: string[];
-  };
-  headline: {
-    line1: string;
-    line2: string;
-  };
-  subtitle: string;
-  buttons?: {
-    primary?: {
-      text: string;
-      onClick?: () => void;
-    };
-    secondary?: {
-      text: string;
-      onClick?: () => void;
-    };
-  };
   className?: string;
 }
 
@@ -350,13 +332,7 @@ void main(){gl_Position=position;}`;
 };
 
 // Reusable Hero Component
-const ShaderHero: React.FC<HeroProps> = ({
-  trustBadge,
-  headline,
-  subtitle,
-  buttons,
-  className = "",
-}) => {
+const ShaderHero: React.FC<HeroProps> = ({ className = "" }) => {
   const canvasRef = useShaderBackground();
 
   return (

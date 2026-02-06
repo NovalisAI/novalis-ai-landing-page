@@ -640,7 +640,7 @@ const HorizonHero = () => {
       {/* Three.js Canvas */}
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 w-screen h-screen z-0 pointer-events-none"
+        className="inset-0 w-screen h-screen z-0 pointer-events-none"
       />
 
       {/* Main content */}

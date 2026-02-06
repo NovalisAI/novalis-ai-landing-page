@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap");
+
+.font-orbitron {
+  font-family: "Orbitron", sans-serif;
+}
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -40,6 +45,14 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --bg-0: #09090b;
+  --bg-100: #18181b;
+  --bg-200: #27272a;
+  --bg-300: #3f3f46;
+  --text-100: #fafafa;
+  --text-200: #e4e4e7;
+  --text-300: #a1a1aa;
+  --text-400: #71717a;
 }
 
 @theme inline {
@@ -84,11 +97,39 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   @keyframes loading-slide {
-  0% {
-    transform: translateX(-100%);
+    0% {
+      transform: translateX(-100%);
     }
-  100% {
-    transform: translateX(100%);
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --radius: var(----radius);
+  --color-text-400: var(----text-400);
+  --color-text-300: var(----text-300);
+  --color-text-200: var(----text-200);
+  --color-text-100: var(----text-100);
+  --color-bg-300: var(----bg-300);
+  --color-bg-200: var(----bg-200);
+  --color-bg-100: var(----bg-100);
+  --color-bg-0: var(----bg-0);
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+    }
+  50% {
+    transform: translateY(-10px);
     }
   }
 }
@@ -102,7 +143,8 @@ html {
 }
 
 body {
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at top left,
       rgba(232, 128, 1, 0.18),
       transparent 45%
@@ -113,7 +155,11 @@ body {
       transparent 55%
     ),
     #050505;
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family:
+    var(--font-sans),
+    system-ui,
+    -apple-system,
+    sans-serif;
   min-height: 100vh;
 }
 

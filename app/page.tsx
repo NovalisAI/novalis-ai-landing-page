@@ -5,14 +5,23 @@ import { Hero } from "@/components/sections/Hero";
 import { ServicesBento } from "@/components/sections/ServicesBento";
 import { Team } from "@/components/sections/Team";
 import { GlowButton } from "@/components/ui/GlowButton";
+import GlassmorphismTrustHero from "@/components/glassmorphism-trust-hero";
+import FutureNavbar from "@/components/future-navbar";
+import AboutUsSection from "@/components/about-us-section";
+import SyntheticHero from "@/components/synthetic-hero";
 
 export default function Home() {
   return (
     <div className="min-h-screen text-white">
-      <SiteHeader />
+      {/* <SiteHeader /> */}
+      <FutureNavbar />
       <main>
-        <Hero />
-        <ServicesBento />
+        {/* <Hero /> */}
+        <GlassmorphismTrustHero />
+        {/* <ServicesBento /> */}
+
+        <AboutUsSection />
+        <SyntheticHero title="Novalis AI" description="les sites" />
         <Team />
         <section id="contact" className="py-24">
           <div className="mx-auto max-w-6xl px-4">

@@ -1,12 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Cpu,
-  Layers,
-  LayoutDashboard,
-  ShoppingBag,
-} from "lucide-react";
+import { Cpu, Layers, LayoutDashboard, ShoppingBag } from "lucide-react";
 
 const services = [
   {
@@ -23,7 +18,11 @@ const services = [
       "Legacy-to-cloud migration, security-first architecture, and internal platforms built for resilience.",
     icon: Layers,
     span: "md:col-span-5",
-    hover: { rotate: -1, scale: 1.02, boxShadow: "0 16px 40px rgba(255, 255, 63, 0.35)" },
+    hover: {
+      rotate: -1,
+      scale: 1.02,
+      boxShadow: "0 16px 40px rgba(255, 184, 0, 0.35)",
+    },
   },
   {
     title: "Command Dashboards",
@@ -31,7 +30,7 @@ const services = [
       "Real-time operational visibility with immersive data experiences and kinetic reporting.",
     icon: LayoutDashboard,
     span: "md:col-span-5",
-    hover: { x: 6, y: -6, boxShadow: "0 16px 36px rgba(255, 255, 255, 0.2)" },
+    hover: { x: 6, y: -6, boxShadow: "0 16px 36px rgba(232, 128, 1, 0.2)" },
   },
   {
     title: "E-commerce Fusion",
@@ -49,10 +48,10 @@ export function ServicesBento() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="space-y-3">
-            <p className="text-xs uppercase tracking-[0.4em] text-novalis-yellow/80">
+            <p className="text-xs uppercase tracking-[0.4em] text-orange-500 font-bold">
               Services
             </p>
-            <h2 className="text-3xl font-semibold text-white md:text-4xl">
+            <h2 className="text-3xl font-orbitron font-black text-white md:text-4xl">
               Bento-crafted capabilities for ambitious teams.
             </h2>
           </div>

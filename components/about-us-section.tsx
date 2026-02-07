@@ -74,7 +74,7 @@ export default function AboutUsSection() {
     {
       icon: <Pen className="w-6 h-6" />,
       secondaryIcon: (
-        <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />
+        <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-orange-400" />
       ),
       title: "Interior",
       description:
@@ -84,7 +84,7 @@ export default function AboutUsSection() {
     {
       icon: <Home className="w-6 h-6" />,
       secondaryIcon: (
-        <CheckCircle className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />
+        <CheckCircle className="w-4 h-4 absolute -top-1 -right-1 text-yellow-400" />
       ),
       title: "Exterior",
       description:
@@ -94,7 +94,7 @@ export default function AboutUsSection() {
     {
       icon: <PenTool className="w-6 h-6" />,
       secondaryIcon: (
-        <Star className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />
+        <Star className="w-4 h-4 absolute -top-1 -right-1 text-orange-400" />
       ),
       title: "Design",
       description:
@@ -104,7 +104,7 @@ export default function AboutUsSection() {
     {
       icon: <PaintBucket className="w-6 h-6" />,
       secondaryIcon: (
-        <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />
+        <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-yellow-400" />
       ),
       title: "Decoration",
       description:
@@ -114,7 +114,7 @@ export default function AboutUsSection() {
     {
       icon: <Ruler className="w-6 h-6" />,
       secondaryIcon: (
-        <CheckCircle className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />
+        <CheckCircle className="w-4 h-4 absolute -top-1 -right-1 text-orange-400" />
       ),
       title: "Planning",
       description:
@@ -124,7 +124,7 @@ export default function AboutUsSection() {
     {
       icon: <Building2 className="w-6 h-6" />,
       secondaryIcon: (
-        <Star className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />
+        <Star className="w-4 h-4 absolute -top-1 -right-1 text-yellow-400" />
       ),
       title: "Execution",
       description:
@@ -149,19 +149,19 @@ export default function AboutUsSection() {
     <section
       id="about-section"
       ref={sectionRef}
-      className="w-full py-24 px-4 bg-gradient-to-br from-[#1a1200] via-[#2a1a00] to-[#ffb300]/10 text-yellow-200 overflow-hidden relative"
+      className="w-full py-24 px-4 overflow-hidden relative"
     >
       {/* Decorative background elements */}
       <motion.div
-        className="absolute top-20 left-10 w-64 h-64 rounded-full bg-[#ffb300]/10 blur-3xl"
+        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-orange-600/10 blur-[120px]"
         style={{ y: y1, rotate: rotate1 }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-[#ffb300]/20 blur-3xl"
+        className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full bg-yellow-600/5 blur-[150px]"
         style={{ y: y2, rotate: rotate2 }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/4 w-4 h-4 rounded-full bg-[#ffb300]/40"
+        className="absolute top-1/2 left-1/4 w-4 h-4 rounded-full bg-orange-500/40 blur-[2px]"
         animate={{
           y: [0, -15, 0],
           opacity: [0.5, 1, 0.5],
@@ -173,7 +173,7 @@ export default function AboutUsSection() {
         }}
       />
       <motion.div
-        className="absolute bottom-1/3 right-1/4 w-6 h-6 rounded-full bg-[#ffb300]/30"
+        className="absolute bottom-1/3 right-1/4 w-6 h-6 rounded-full bg-yellow-500/30 blur-[3px]"
         animate={{
           y: [0, 20, 0],
           opacity: [0.5, 1, 0.5],
@@ -197,19 +197,22 @@ export default function AboutUsSection() {
           variants={itemVariants}
         >
           <motion.span
-            className="text-[#ffb300] font-medium mb-2 flex items-center gap-2"
+            className="text-orange-500 font-bold mb-2 flex items-center gap-2 tracking-[0.2em] uppercase text-xs"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Zap className="w-4 h-4" />
+            <Zap className="w-4 h-4 fill-orange-500" />
             DISCOVER OUR STORY
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-yellow-100">
-            About Us
+          <h2 className="text-4xl md:text-5xl font-orbitron font-black mb-4 text-center text-white">
+            ABOUT{" "}
+            <span className="bg-linear-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
+              US
+            </span>
           </h2>
           <motion.div
-            className="w-24 h-1 bg-[#ffb300]"
+            className="w-24 h-1 bg-linear-to-r from-orange-500 to-yellow-400"
             initial={{ width: 0 }}
             animate={{ width: 96 }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -264,13 +267,13 @@ export default function AboutUsSection() {
                   className="w-full h-full object-cover"
                 />
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-[#202e44]/50 to-transparent flex items-end justify-center p-4"
+                  className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent flex items-end justify-center p-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.9 }}
                 >
                   <motion.button
-                    className="bg-white text-[#202e44] px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium"
+                    className="bg-white text-black px-4 py-2 rounded-full flex items-center gap-2 text-sm font-bold"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -279,7 +282,7 @@ export default function AboutUsSection() {
                 </motion.div>
               </motion.div>
               <motion.div
-                className="absolute inset-0 border-4 border-[#A9BBC8] rounded-md -m-3 z-[-1]"
+                className="absolute inset-0 border-2 border-orange-500/30 rounded-md -m-3 z-[-1]"
                 initial={{ opacity: 0, scale: 1.1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -287,14 +290,14 @@ export default function AboutUsSection() {
 
               {/* Floating accent elements */}
               <motion.div
-                className="absolute -top-4 -right-8 w-16 h-16 rounded-full bg-[#88734C]/10"
+                className="absolute -top-4 -right-8 w-16 h-16 rounded-full bg-orange-500/10 blur-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.9 }}
                 style={{ y: y1 }}
               ></motion.div>
               <motion.div
-                className="absolute -bottom-6 -left-10 w-20 h-20 rounded-full bg-[#A9BBC8]/15"
+                className="absolute -bottom-6 -left-10 w-20 h-20 rounded-full bg-yellow-500/10 blur-xl"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 1.1 }}
@@ -303,10 +306,10 @@ export default function AboutUsSection() {
 
               {/* Additional decorative elements */}
               <motion.div
-                className="absolute -top-10 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#88734C]"
+                className="absolute -top-10 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-orange-500"
                 animate={{
                   y: [0, -10, 0],
-                  opacity: [0.5, 1, 0.5],
+                  opacity: [0.3, 0.8, 0.3],
                 }}
                 transition={{
                   duration: 2,
@@ -315,10 +318,10 @@ export default function AboutUsSection() {
                 }}
               ></motion.div>
               <motion.div
-                className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#A9BBC8]"
+                className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-yellow-500"
                 animate={{
                   y: [0, 10, 0],
-                  opacity: [0.5, 1, 0.5],
+                  opacity: [0.3, 0.8, 0.3],
                 }}
                 transition={{
                   duration: 2,
@@ -372,25 +375,25 @@ export default function AboutUsSection() {
 
         {/* CTA Section */}
         <motion.div
-          className="mt-20 bg-gradient-to-br from-[#1a1200] via-[#2a1a00] to-[#ffb300]/20 text-yellow-100 p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl border border-[#ffb300]/20"
+          className="mt-20 bg-linear-to-br from-orange-600/10 via-yellow-600/10 to-transparent text-white p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl border border-orange-500/20 backdrop-blur-md"
           initial={{ opacity: 0, y: 30 }}
           animate={isStatsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <div className="flex-1">
-            <h3 className="text-2xl font-medium mb-2">
+          <div className="flex-1 text-center md:text-left">
+            <h3 className="text-2xl font-orbitron font-bold mb-2">
               Ready to transform your space?
             </h3>
-            <p className="text-yellow-200/80">
-              Let's create something beautiful together.
+            <p className="text-white/60">
+              Let's create something beautiful together with Novalis AI.
             </p>
           </div>
           <motion.button
-            className="bg-[#ffb300] hover:bg-[#ffb300]/90 text-[#1a1200] px-6 py-3 rounded-lg flex items-center gap-2 font-medium transition-colors shadow-lg"
-            whileHover={{ scale: 1.05 }}
+            className="bg-linear-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-4 rounded-xl flex items-center gap-3 font-black shadow-[0_10px_20px_rgba(232,128,1,0.3)] transition-all"
+            whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get Started <ArrowRight className="w-4 h-4" />
+            Get Started <ArrowRight className="w-5 h-5" />
           </motion.button>
         </motion.div>
       </motion.div>
@@ -438,7 +441,7 @@ function ServiceItem({
         transition={{ duration: 0.6, delay: delay + 0.2 }}
       >
         <motion.div
-          className="text-[#88734C] bg-[#88734C]/10 p-3 rounded-lg transition-colors duration-300 group-hover:bg-[#88734C]/20 relative"
+          className="text-orange-500 bg-orange-500/10 p-3 rounded-lg transition-colors duration-300 group-hover:bg-orange-500/20 relative backdrop-blur-sm border border-orange-500/10"
           whileHover={{
             rotate: [0, -10, 10, -5, 0],
             transition: { duration: 0.5 },
@@ -447,12 +450,12 @@ function ServiceItem({
           {icon}
           {secondaryIcon}
         </motion.div>
-        <h3 className="text-xl font-medium text-yellow-100 group-hover:text-yellow-200 transition-colors duration-300">
+        <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300 font-orbitron tracking-tight">
           {title}
         </h3>
       </motion.div>
       <motion.p
-        className="text-sm text-yellow-100/80 leading-relaxed pl-12"
+        className="text-sm text-white/60 leading-relaxed pl-12"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: delay + 0.4 }}
@@ -460,7 +463,7 @@ function ServiceItem({
         {description}
       </motion.p>
       <motion.div
-        className="mt-3 pl-12 flex items-center text-[#88734C] text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="mt-3 pl-12 flex items-center text-orange-500 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0 }}
       >
@@ -515,7 +518,7 @@ function StatCounter({
     <motion.div
       className={
         dark
-          ? "bg-[#1a1200]/80 border border-[#ffb300]/20 text-yellow-100 p-6 rounded-xl flex flex-col items-center text-center group hover:bg-[#2a1a00]/80 transition-colors duration-300 shadow-lg"
+          ? "bg-white/5 border border-white/10 text-white p-6 rounded-2xl flex flex-col items-center text-center group hover:bg-white/10 transition-all duration-500 shadow-2xl backdrop-blur-xl"
           : "bg-white/50 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center text-center group hover:bg-white transition-colors duration-300"
       }
       variants={{
@@ -531,8 +534,8 @@ function StatCounter({
       <motion.div
         className={
           dark
-            ? "w-14 h-14 rounded-full bg-[#ffb300]/10 flex items-center justify-center mb-4 text-[#ffb300] group-hover:bg-[#ffb300]/20 transition-colors duration-300"
-            : "w-14 h-14 rounded-full bg-[#202e44]/5 flex items-center justify-center mb-4 text-[#88734C] group-hover:bg-[#88734C]/10 transition-colors duration-300"
+            ? "w-14 h-14 rounded-full bg-orange-500/10 flex items-center justify-center mb-4 text-orange-500 group-hover:bg-orange-500/20 transition-colors duration-300 border border-orange-500/20"
+            : "w-14 h-14 rounded-full bg-orange-500/5 flex items-center justify-center mb-4 text-orange-500 group-hover:bg-orange-500/10 transition-colors duration-300"
         }
         whileHover={{ rotate: 360, transition: { duration: 0.8 } }}
       >
@@ -542,18 +545,18 @@ function StatCounter({
         ref={countRef}
         className={
           dark
-            ? "text-3xl font-bold text-yellow-100 flex items-center"
-            : "text-3xl font-bold text-[#202e44] flex items-center"
+            ? "text-3xl font-orbitron font-black text-white flex items-center"
+            : "text-3xl font-bold text-black flex items-center"
         }
       >
         <motion.span>{displayValue}</motion.span>
-        <span>{suffix}</span>
+        <span className="text-orange-500 ml-0.5">{suffix}</span>
       </motion.div>
       <p
         className={
           dark
-            ? "text-yellow-200/80 text-sm mt-1"
-            : "text-[#202e44]/70 text-sm mt-1"
+            ? "text-white/40 text-xs mt-1 uppercase tracking-widest font-mono"
+            : "text-black/70 text-sm mt-1"
         }
       >
         {label}
@@ -561,8 +564,8 @@ function StatCounter({
       <motion.div
         className={
           dark
-            ? "w-10 h-0.5 bg-[#ffb300] mt-3 group-hover:w-16 transition-all duration-300"
-            : "w-10 h-0.5 bg-[#88734C] mt-3 group-hover:w-16 transition-all duration-300"
+            ? "w-10 h-0.5 bg-linear-to-r from-orange-500 to-yellow-500 mt-4 group-hover:w-16 transition-all duration-500"
+            : "w-10 h-0.5 bg-orange-500 mt-3 group-hover:w-16 transition-all duration-300"
         }
       />
     </motion.div>

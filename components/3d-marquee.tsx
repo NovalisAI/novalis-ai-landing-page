@@ -88,7 +88,7 @@ const GridLineHorizontal = ({
           "--width": "5px",
           "--fade-stop": "90%",
           "--offset": offset || "200px", //-100px if you want to keep the line inside
-          "--color-dark": "rgba(255, 255, 255, 0.2)",
+          "--color-dark": "rgba(232, 128, 1, 0.15)",
           maskComposite: "exclude",
         } as React.CSSProperties
       }
@@ -123,7 +123,7 @@ const GridLineVertical = ({
           "--width": "1px",
           "--fade-stop": "90%",
           "--offset": offset || "150px", //-100px if you want to keep the line inside
-          "--color-dark": "rgba(255, 255, 255, 0.2)",
+          "--color-dark": "rgba(232, 128, 1, 0.15)",
           maskComposite: "exclude",
         } as React.CSSProperties
       }

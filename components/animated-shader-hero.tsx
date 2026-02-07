@@ -180,8 +180,12 @@ void main(){gl_Position=position;}`;
         this.canvas.height,
       );
       gl.uniform1f((program as any).time, now * 1e-3);
-      gl.uniform2f((program as any).move, ...this.mouseMove);
-      gl.uniform2f((program as any).touch, ...this.mouseCoords);
+      gl.uniform2f((program as any).move, this.mouseMove[0], this.mouseMove[1]);
+      gl.uniform2f(
+        (program as any).touch,
+        this.mouseCoords[0],
+        this.mouseCoords[1],
+      );
       gl.uniform1i((program as any).pointerCount, this.nbrOfPointers);
       gl.uniform2fv((program as any).pointers, this.pointerCoords);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -438,21 +442,34 @@ void main(void) {
     float d = length(uv);
 
     vec3 orange = vec3(0.91, 0.50, 0.004); // #E88001
-    vec3 yellow = vec3(1.0, 1.0, 0.247);    // #FFFF3F
-    vec3 black = vec3(0.0, 0.0, 0.0);       // Noir profond
-    float radius = 0.26; // Taille du disque noir
+    vec3 yellow = vec3(1.0, 0.72, 0.0);      // #FFB800 refined
+    vec3 black = vec3(0.02, 0.02, 0.02);    // Slightly lighter black
+    float radius = 0.28; 
     
     float angle = atan(uv.y, uv.x);
-    float corona = softNoise(vec2(angle * 3.0 + T * 0.2, d - T * 0.4));
-    corona += softNoise(vec2(angle * 5.0 - T * 0.3, d * 2.0 + T * 0.2)) * 0.5;
-    float glow = 0.02 / abs(d - radius);
-    glow = pow(glow, 1.1) * corona;
-    vec3 finalCol = mix(orange, yellow, glow * 0.5) * glow;
-    float mask = smoothstep(radius, radius + 0.005, d);
-    vec3 finalImage = mix(black, finalCol, mask);
+    
+    // Multi-layered corona for more depth
+    float corona = softNoise(vec2(angle * 4.0 + T * 0.1, d - T * 0.2));
+    corona += softNoise(vec2(angle * 6.0 - T * 0.2, d * 1.5 + T * 0.1)) * 0.4;
+    corona += softNoise(vec2(angle * 12.0 + T * 0.3, d * 3.0)) * 0.2;
+    
+    float edge = abs(d - radius);
+    float glow = 0.012 / pow(edge, 1.05);
+    glow *= (0.8 + 0.5 * corona);
+    
+    // Outer atmospheric glow
+    float atmosphere = 0.1 / pow(d + 0.1, 1.5);
+    
+    vec3 col = mix(orange, yellow, corona);
+    vec3 finalCol = col * glow + col * atmosphere * 0.2;
+    
+    // Smooth transition into darkness
+    float mask = smoothstep(radius - 0.01, radius + 0.02, d);
+    vec3 finalImage = mix(vec3(0.0), finalCol, mask);
 
-    float diamond = 0.001 / length(uv - vec2(0.18, -0.18)); 
-    finalImage += diamond * yellow * mask;
+    // Subtle star diamond
+    float diamond = 0.0008 / length(uv - vec2(0.2, -0.15)); 
+    finalImage += diamond * yellow * smoothstep(radius, radius+0.1, d);
 
     O = vec4(finalImage, 1.0);
 }`;

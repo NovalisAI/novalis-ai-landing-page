@@ -1,33 +1,46 @@
-import React from 'react';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { ArrowUpRight } from 'lucide-react';
+import React from "react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 
 // Interface for individual process card props
 interface ProcessCardProps {
-  icon: React.ElementType;
+  icon: React.ElementType<{ className?: string }>;
   title: string;
   description: string;
   className?: string;
 }
 
 // Reusable Process Card Component
-const ProcessCard: React.FC<ProcessCardProps> = ({ icon: Icon, title, description, className }) => (
-  <div className={cn("group relative w-full rounded-lg border bg-card p-6 transition-all cursor-pointer duration-300 hover:border-primary/60 hover:shadow-lg ", className)}>
+const ProcessCard: React.FC<ProcessCardProps> = ({
+  icon: Icon,
+  title,
+  description,
+  className,
+}) => (
+  <div
+    className={cn(
+      "group relative w-full rounded-2xl border border-white/10 bg-white/5 p-8 transition-all cursor-pointer duration-500 hover:border-orange-500/40 hover:bg-white/10 backdrop-blur-sm",
+      className,
+    )}
+  >
     {/* Decorative Line - Visible on larger screens */}
-    <div className="absolute -left-[1px] top-1/2 hidden h-1/2 w-px -translate-y-1/2 bg-border transition-colors group-hover:bg-primary/60 md:block" />
-    <div className="absolute left-1/2 top-0 h-px w-1/2 -translate-x-1/2 bg-border transition-colors group-hover:bg-primary/60 md:hidden" />
-
+    <div className="absolute -left-[1px] top-1/2 hidden h-12 w-px -translate-y-1/2 bg-orange-500/20 transition-all duration-500 group-hover:bg-orange-500 group-hover:h-2/3 md:block" />
+    <div className="absolute left-1/2 top-0 h-px w-12 -translate-x-1/2 bg-yellow-500/20 transition-all duration-500 group-hover:bg-yellow-500 group-hover:w-2/3 md:hidden" />
 
     {/* Icon Container */}
-    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg duration-300 border bg-background text-primary shadow-sm transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-      <Icon className="h-6 w-6" />
+    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-black/40 text-orange-500 shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500/50">
+      <Icon className="h-7 w-7" />
     </div>
 
     {/* Content */}
     <div className="flex flex-col">
-      <h3 className="mb-1 text-lg font-semibold text-card-foreground">{title}</h3>
-      <p className="text-sm text-muted-foreground">{description}</p>
+      <h3 className="mb-2 text-xl font-orbitron font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
+        {title}
+      </h3>
+      <p className="text-sm text-white/50 leading-relaxed font-light">
+        {description}
+      </p>
     </div>
   </div>
 );
@@ -50,20 +63,23 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
   items,
 }) => {
   return (
-    <section className="w-full bg-background py-16 md:py-24">
+    <section className="w-full py-16 md:py-24">
       <div className="container mx-auto grid grid-cols-1 gap-12 px-4 md:grid-cols-3 md:gap-8 lg:gap-16">
         {/* Left Content */}
         <div className="flex flex-col items-start justify-center text-center md:col-span-1 md:text-left">
-          <span className="mb-2 text-sm font-medium uppercase tracking-widest text-primary">
+          <span className="mb-3 text-[10px] font-bold uppercase tracking-[0.4em] text-orange-500/80 font-mono">
             {subtitle}
           </span>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          <h2 className="mb-6 text-4xl font-orbitron font-black tracking-tight text-white md:text-5xl border-l-4 border-orange-500 pl-6">
             {title}
           </h2>
-          <p className="mb-6 text-base text-muted-foreground">
+          <p className="mb-8 text-lg text-white/50 leading-relaxed font-light">
             {description}
           </p>
-          <Button size="lg" className="hover:scale-110 duration-300 transition-all cursor-pointer">
+          <Button
+            size="lg"
+            className="bg-linear-to-r from-orange-500 to-yellow-500 text-white font-black hover:scale-105 duration-300 transition-all cursor-pointer px-10 py-6 rounded-xl shadow-[0_10px_20px_rgba(232,128,1,0.3)]"
+          >
             {buttonText}
             <ArrowUpRight className="ml-2 h-5 w-5" />
           </Button>

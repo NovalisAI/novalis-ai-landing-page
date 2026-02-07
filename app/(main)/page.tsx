@@ -41,7 +41,7 @@ export default function Home() {
     <div className="">
       <Navbar />
 
-      <div className="">
+      <div className="bg-[#050505] text-white">
         {/* <SiteHeader /> */}
         <main>
           {/* <Hero /> */}
@@ -141,7 +141,7 @@ export default function Home() {
           </div>
           {/* <EarbudShowcase /> */}
           <Cta />
-          <ThreeDMarquee images={images} />
+          {/* <ThreeDMarquee images={images} /> */}
         </main>
         <HoverFooter />
       </div>

@@ -52,11 +52,11 @@ export const TextHoverEffect = ({
         >
           {hovered && (
             <>
-              <stop offset="0%" stopColor="#eab308" />
-              <stop offset="25%" stopColor="#ef4444" />
-              <stop offset="50%" stopColor="#80eeb4" />
-              <stop offset="75%" stopColor="#06b6d4" />
-              <stop offset="100%" stopColor="#8b5cf6" />
+              <stop offset="0%" stopColor="#E88001" />
+              <stop offset="25%" stopColor="#FFB800" />
+              <stop offset="50%" stopColor="#FF8A00" />
+              <stop offset="75%" stopColor="#E88001" />
+              <stop offset="100%" stopColor="#FFB800" />
             </>
           )}
         </linearGradient>
@@ -99,8 +99,8 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-[#3ca2fa] font-[helvetica] text-7xl font-bold 
-        dark:stroke-[#3ca2fa99]"
+        className="fill-transparent stroke-orange-500 font-orbitron text-7xl font-bold 
+        dark:stroke-orange-500/60"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{
           strokeDashoffset: 0,
@@ -135,7 +135,7 @@ export const FooterBackgroundGradient = () => {
       className="absolute inset-0 z-0"
       style={{
         background:
-          "radial-gradient(125% 125% at 50% 10%, #0F0F1166 50%, #3ca2fa33 100%)",
+          "radial-gradient(125% 125% at 50% 10%, #0F0F1166 50%, rgba(232,128,1,0.1) 100%)",
       }}
     />
   );
@@ -181,18 +181,18 @@ function HoverFooter() {
   // Contact info data
   const contactInfo = [
     {
-      icon: <Mail size={18} className="text-[#3ca2fa]" />,
-      text: "hello@nurui.com",
-      href: "mailto:hello@nurui.com",
+      icon: <Mail size={18} className="text-orange-500" />,
+      text: "hello@novalis-ai.com",
+      href: "mailto:hello@novalis-ai.com",
     },
     {
-      icon: <Phone size={18} className="text-[#3ca2fa]" />,
-      text: "+91 86373 73116",
-      href: "tel:+918637373116",
+      icon: <Phone size={18} className="text-orange-500" />,
+      text: "+33 1 23 45 67 89",
+      href: "tel:+33123456789",
     },
     {
-      icon: <MapPin size={18} className="text-[#3ca2fa]" />,
-      text: "Sylhet, Bangladesh",
+      icon: <MapPin size={18} className="text-orange-500" />,
+      text: "Tech Hub, Paris",
     },
   ];
 
@@ -212,13 +212,16 @@ function HoverFooter() {
           {/* Brand section */}
           <div className="flex flex-col space-y-4">
             <div className="flex items-center space-x-2">
-              <span className="text-[#3ca2fa] text-3xl font-extrabold">
-                &hearts;
+              <span className="text-orange-500 text-3xl font-extrabold shadow-[0_0_15px_rgba(232,128,1,0.5)]">
+                &gt;_
               </span>
-              <span className="text-white text-3xl font-bold">Nur/ui</span>
+              <span className="text-white text-3xl font-orbitron font-black">
+                Novalis <span className="text-orange-500">AI</span>
+              </span>
             </div>
-            <p className="text-sm leading-relaxed">
-              Nur UI is a modern React and Next.js based UI component library.
+            <p className="text-sm leading-relaxed text-white/50">
+              Novalis AI is a premium high-tech dev agency crafting AI-native
+              products and cinematic digital experiences.
             </p>
           </div>
 
@@ -233,12 +236,12 @@ function HoverFooter() {
                   <li key={link.label} className="relative">
                     <a
                       href={link.href}
-                      className="hover:text-[#3ca2fa] transition-colors"
+                      className="hover:text-orange-500 transition-colors text-white/60 hover:text-white"
                     >
                       {link.label}
                     </a>
                     {link.pulse && (
-                      <span className="absolute top-0 right-[-10px] w-2 h-2 rounded-full bg-[#3ca2fa] animate-pulse"></span>
+                      <span className="absolute top-0 right-[-10px] w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse shadow-[0_0_8px_rgba(232,128,1,0.8)]"></span>
                     )}
                   </li>
                 ))}
@@ -258,7 +261,7 @@ function HoverFooter() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="hover:text-[#3ca2fa] transition-colors"
+                      className="hover:text-orange-500 transition-colors"
                     >
                       {item.text}
                     </a>
@@ -284,7 +287,7 @@ function HoverFooter() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="hover:text-[#3ca2fa] transition-colors"
+                className="hover:text-orange-500 transition-colors"
               >
                 {icon}
               </a>
@@ -293,14 +296,14 @@ function HoverFooter() {
 
           {/* Copyright */}
           <p className="text-center md:text-left">
-            &copy; {new Date().getFullYear()} Nurui. All rights reserved.
+            &copy; {new Date().getFullYear()} Novalis AI. All rights reserved.
           </p>
         </div>
       </div>
 
       {/* Text hover effect */}
       <div className="lg:flex hidden h-[30rem] -mt-52 -mb-36">
-        <TextHoverEffect text="Nurui" className="z-50" />
+        <TextHoverEffect text="NOVALIS AI" className="z-50" />
       </div>
 
       <FooterBackgroundGradient />

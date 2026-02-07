@@ -21,6 +21,8 @@ export const metadata: Metadata = {
     "Novalis AI is a premium high-tech dev agency crafting AI-native products, enterprise systems, and cinematic digital experiences.",
 };
 
+import { LoadingScreen } from "@/components/loading-screen";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,6 +33,7 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}
       >
+        <LoadingScreen />
         {children}
       </body>
     </html>

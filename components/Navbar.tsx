@@ -9,14 +9,14 @@ const AnimatedNavLink = ({
   href: string;
   children: React.ReactNode;
 }) => {
-  const defaultTextColor = "text-gray-300";
-  const hoverTextColor = "text-white";
-  const textSizeClass = "text-sm";
+  const defaultTextColor = "text-white/60";
+  const hoverTextColor = "text-orange-500";
+  const textSizeClass = "text-xs uppercase tracking-widest font-bold";
 
   return (
     <a
       href={href}
-      className={`group relative inline-block overflow-hidden h-5 flex items-center ${textSizeClass}`}
+      className={`group relative inline-block overflow-hidden h-5 items-center ${textSizeClass}`}
     >
       <div className="flex flex-col transition-transform duration-400 ease-out transform group-hover:-translate-y-1/2">
         <span className={defaultTextColor}>{children}</span>
@@ -56,38 +56,45 @@ export default function Navbar() {
   }, [isOpen]);
 
   const logoElement = (
-    <div className="relative w-5 h-5 flex items-center justify-center">
-      <span className="absolute w-1.5 h-1.5 rounded-full bg-gray-200 top-0 left-1/2 transform -translate-x-1/2 opacity-80"></span>
-      <span className="absolute w-1.5 h-1.5 rounded-full bg-gray-200 left-0 top-1/2 transform -translate-y-1/2 opacity-80"></span>
-      <span className="absolute w-1.5 h-1.5 rounded-full bg-gray-200 right-0 top-1/2 transform -translate-y-1/2 opacity-80"></span>
-      <span className="absolute w-1.5 h-1.5 rounded-full bg-gray-200 bottom-0 left-1/2 transform -translate-x-1/2 opacity-80"></span>
+    <div className="flex items-center gap-3 group cursor-pointer">
+      {/* Logo Image Placeholder */}
+
+      {/* Text Logo */}
+      <div className="flex flex-col -space-y-1">
+        <span className="text-xl font-orbitron font-black tracking-tight text-white leading-none">
+          NOVALIS{" "}
+          <span className="bg-linear-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
+            AI
+          </span>
+        </span>
+      </div>
     </div>
   );
 
   const navLinksData = [
-    { label: "Manifesto", href: "#1" },
+    { label: "About Us", href: "#1" },
     { label: "Careers", href: "#2" },
     { label: "Discover", href: "#3" },
   ];
 
   const loginButtonElement = (
-    <button className="px-4 py-2 sm:px-3 text-xs sm:text-sm border border-[#333] bg-[rgba(31,31,31,0.62)] text-gray-300 rounded-full hover:border-white/50 hover:text-white transition-colors duration-200 w-full sm:w-auto">
-      LogIn
+    <button className="px-5 py-2 sm:px-4 text-xs font-bold border border-white/10 bg-white/5 text-white/80 rounded-full hover:border-orange-500/50 hover:text-white transition-all duration-300 w-full sm:w-auto backdrop-blur-md">
+      LOG IN
     </button>
   );
 
   const signupButtonElement = (
     <div className="relative group w-full sm:w-auto">
       <div
-        className="absolute inset-0 -m-2 rounded-full
+        className="absolute inset-0 -m-1 rounded-full
                      hidden sm:block
-                     bg-gray-100
-                     opacity-40 filter blur-lg pointer-events-none
+                     bg-orange-500
+                     opacity-20 filter blur-md pointer-events-none
                      transition-all duration-300 ease-out
-                     group-hover:opacity-60 group-hover:blur-xl group-hover:-m-3"
+                     group-hover:opacity-40 group-hover:blur-lg"
       ></div>
-      <button className="relative z-10 px-4 py-2 sm:px-3 text-xs sm:text-sm font-semibold text-black bg-gradient-to-br from-gray-100 to-gray-300 rounded-full hover:from-gray-200 hover:to-gray-400 transition-all duration-200 w-full sm:w-auto">
-        Signup
+      <button className="relative z-10 px-5 py-2 sm:px-4 text-xs font-black text-white bg-orange-500 rounded-full hover:scale-105 transition-all duration-300 w-full sm:w-auto">
+        SIGN UP
       </button>
     </div>
   );
@@ -96,11 +103,11 @@ export default function Navbar() {
     <header
       className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-300
                        flex flex-col items-center
-                       pl-6 pr-6 py-3 backdrop-blur-sm
+                       pl-6 pr-6 py-3 backdrop-blur-xl
                        ${headerShapeClass}
-                       border border-[#333] bg-[#1f1f1f57]
+                       border border-white/10 bg-black/60
                        w-[calc(100%-2rem)] sm:w-auto
-                       transition-[border-radius] duration-0 ease-in-out`}
+                       transition-[border-radius] duration-300 ease-in-out shadow-2xl`}
     >
       <div className="flex items-center justify-between w-full gap-x-6 sm:gap-x-8">
         <div className="flex items-center">{logoElement}</div>

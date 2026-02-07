@@ -13,7 +13,7 @@ const config: Config = {
       colors: {
         novalis: {
           orange: "#E88001",
-          yellow: "#FFFF3F",
+          yellow: "#FFB800",
           black: "#050505",
           dark: "#121212",
           charcoal: "#0B0B0B",

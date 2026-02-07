@@ -87,7 +87,7 @@ export default function GlassmorphismTrustHero() {
             >
               Novalis AI
               <br />
-              <span className="bg-linear-to-br from-white via-white to-[#ffcd75] bg-clip-text text-transparent">
+              <span className="bg-linear-to-br from-white via-orange-200 to-orange-500 bg-clip-text text-transparent">
                 Experiences
               </span>
               <br />
@@ -125,7 +125,7 @@ export default function GlassmorphismTrustHero() {
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/20">
-                    <Target className="h-6 w-6 text-white" />
+                    <Target className="h-6 w-6 text-orange-500" />
                   </div>
                   <div>
                     <div className="text-3xl font-bold tracking-tight text-white">
@@ -144,7 +144,7 @@ export default function GlassmorphismTrustHero() {
                     <span className="text-white font-medium">98%</span>
                   </div>
                   <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-800/50">
-                    <div className="h-full w-[98%] rounded-full bg-gradient-to-r from-white to-zinc-400" />
+                    <div className="h-full w-[98%] rounded-full bg-linear-to-r from-orange-500 to-yellow-400 shadow-[0_0_10px_rgba(232,128,1,0.5)]" />
                   </div>
                 </div>
 

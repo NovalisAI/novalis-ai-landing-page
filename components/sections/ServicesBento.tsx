@@ -51,7 +51,7 @@ export function ServicesBento() {
             <p className="text-xs uppercase tracking-[0.4em] text-orange-500 font-bold">
               Services
             </p>
-            <h2 className="text-3xl font-orbitron font-black text-white md:text-4xl">
+            <h2 className="text-3xl font-black text-white md:text-4xl">
               Bento-crafted capabilities for ambitious teams.
             </h2>
           </div>

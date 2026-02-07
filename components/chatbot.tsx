@@ -69,7 +69,7 @@ export default function Chatbot() {
 
   return (
     <Sheet>
-      <div className="fixed bottom-8 right-8 z-50 max-w-sm w-full flex flex-col items-end">
+      <div className="fixed bottom-8 right-8 z-999 max-w-sm w-full flex flex-col items-end">
         <SheetTrigger asChild>
           <button
             className="w-16 h-16 rounded-full bg-yellow-400 shadow-2xl flex items-center justify-center hover:bg-yellow-300 transition-all border-4 border-yellow-200/60 mb-2"
@@ -97,7 +97,7 @@ export default function Chatbot() {
               <div className="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400/20 mb-2">
                 <Bot className="h-7 w-7 text-yellow-400" />
               </div>
-              <CardTitle className="text-yellow-400 font-orbitron text-2xl">
+              <CardTitle className="text-yellow-400 text-2xl">
                 Chat with Novalis AI
               </CardTitle>
               <CardDescription className="text-white/70">

@@ -61,7 +61,7 @@ export default function Navbar() {
 
       {/* Text Logo */}
       <div className="flex flex-col -space-y-1">
-        <span className="text-xl font-orbitron font-black tracking-tight text-white leading-none">
+        <span className="text-xl font-black tracking-tight text-white leading-none">
           NOVALIS{" "}
           <span className="bg-linear-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
             AI

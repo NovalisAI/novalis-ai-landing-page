@@ -88,7 +88,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
+        className="fill-transparent stroke-orange-500/30 text-5xl font-bold"
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {text}
@@ -99,7 +99,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-orange-500 font-orbitron text-7xl font-bold 
+        className="fill-transparent stroke-orange-500 text-5xl font-bold 
         dark:stroke-orange-500/60"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{
@@ -121,7 +121,7 @@ export const TextHoverEffect = ({
         stroke="url(#textGradient)"
         strokeWidth="0.3"
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-7xl font-bold"
+        className="fill-transparent text-5xl font-bold"
       >
         {text}
       </text>
@@ -215,8 +215,11 @@ function HoverFooter() {
               <span className="text-orange-500 text-3xl font-extrabold shadow-[0_0_15px_rgba(232,128,1,0.5)]">
                 &gt;_
               </span>
-              <span className="text-white text-3xl font-orbitron font-black">
-                Novalis <span className="text-orange-500">AI</span>
+              <span className="text-white text-3xl font-black">
+                Novalis{" "}
+                <span className="bg-linear-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
+                  AI
+                </span>
               </span>
             </div>
             <p className="text-sm leading-relaxed text-white/50">
@@ -236,12 +239,12 @@ function HoverFooter() {
                   <li key={link.label} className="relative">
                     <a
                       href={link.href}
-                      className="hover:text-orange-500 transition-colors text-white/60 hover:text-white"
+                      className="hover:text-orange-500 transition-colors"
                     >
                       {link.label}
                     </a>
                     {link.pulse && (
-                      <span className="absolute top-0 right-[-10px] w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse shadow-[0_0_8px_rgba(232,128,1,0.8)]"></span>
+                      <span className="absolute top-0 right-[-10px] w-2 h-2 rounded-full bg-orange-500 animate-pulse shadow-[0_0_8px_rgba(232,128,1,0.8)]"></span>
                     )}
                   </li>
                 ))}
@@ -266,7 +269,7 @@ function HoverFooter() {
                       {item.text}
                     </a>
                   ) : (
-                    <span className="hover:text-[#3ca2fa] transition-colors">
+                    <span className="hover:text-orange-500 transition-colors">
                       {item.text}
                     </span>
                   )}

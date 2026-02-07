@@ -9,7 +9,7 @@ export default function Testimonials() {
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-orange-500 font-mono">
             Testimonials
           </span>
-          <h2 className="text-4xl font-orbitron font-black text-white lg:text-6xl tracking-tighter">
+          <h2 className="text-4xl font-black text-white lg:text-6xl tracking-tighter">
             LOVED BY <span className="text-orange-500">FORWARD-THINKING</span>{" "}
             LEADERS
           </h2>
@@ -31,7 +31,7 @@ export default function Testimonials() {
             </CardHeader>
             <CardContent>
               <blockquote className="grid h-full grid-rows-[1fr_auto] gap-6">
-                <p className="text-2xl font-orbitron font-bold text-white leading-tight">
+                <p className="text-2xl font-bold text-white leading-tight">
                   "Novalis AI didn't just build a product; they created an
                   entire experience. Their AI-native approach completely
                   transformed our operational efficiency."

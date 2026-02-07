@@ -109,7 +109,7 @@ export const LoadingScreen = () => {
               initial={{ letterSpacing: "0.5em", opacity: 0, y: 20 }}
               animate={{ letterSpacing: "0.1em", opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="text-4xl md:text-6xl font-orbitron font-black text-white mb-2 tracking-widest"
+              className="text-4xl md:text-6xl font-black text-white mb-2 tracking-widest"
             >
               NOVALIS{" "}
               <span className="bg-linear-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">

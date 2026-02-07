@@ -149,11 +149,11 @@ export default function AboutUsSection() {
     <section
       id="about-section"
       ref={sectionRef}
-      className="w-full py-24 px-4 overflow-hidden relative"
+      className="w-full pb-24 pt-36 px-4 overflow-hidden relative"
     >
       {/* Decorative background elements */}
       <motion.div
-        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-orange-600/10 blur-[120px]"
+        className="absolute top-60 left-10 w-96 h-96 rounded-full bg-orange-600/10 blur-[120px]"
         style={{ y: y1, rotate: rotate1 }}
       />
       <motion.div
@@ -202,10 +202,9 @@ export default function AboutUsSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Zap className="w-4 h-4 fill-orange-500" />
             DISCOVER OUR STORY
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-orbitron font-black mb-4 text-center text-white">
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-center text-white">
             ABOUT{" "}
             <span className="bg-linear-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
               US
@@ -381,7 +380,7 @@ export default function AboutUsSection() {
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-orbitron font-bold mb-2">
+            <h3 className="text-2xl font-bold mb-2">
               Ready to transform your space?
             </h3>
             <p className="text-white/60">
@@ -450,7 +449,7 @@ function ServiceItem({
           {icon}
           {secondaryIcon}
         </motion.div>
-        <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300 font-orbitron tracking-tight">
+        <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300 tracking-tight">
           {title}
         </h3>
       </motion.div>
@@ -545,7 +544,7 @@ function StatCounter({
         ref={countRef}
         className={
           dark
-            ? "text-3xl font-orbitron font-black text-white flex items-center"
+            ? "text-3xl font-black text-white flex items-center"
             : "text-3xl font-bold text-black flex items-center"
         }
       >

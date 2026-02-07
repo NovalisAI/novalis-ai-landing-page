@@ -35,7 +35,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
 
     {/* Content */}
     <div className="flex flex-col">
-      <h3 className="mb-2 text-xl font-orbitron font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
+      <h3 className="mb-2 text-xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
         {title}
       </h3>
       <p className="text-sm text-white/50 leading-relaxed font-light">
@@ -70,7 +70,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
           <span className="mb-3 text-[10px] font-bold uppercase tracking-[0.4em] text-orange-500/80 font-mono">
             {subtitle}
           </span>
-          <h2 className="mb-6 text-4xl font-orbitron font-black tracking-tight text-white md:text-5xl border-l-4 border-orange-500 pl-6">
+          <h2 className="mb-6 text-4xl font-black tracking-tight text-white md:text-5xl border-l-4 border-orange-500 pl-6">
             {title}
           </h2>
           <p className="mb-8 text-lg text-white/50 leading-relaxed font-light">

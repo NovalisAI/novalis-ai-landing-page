@@ -70,7 +70,7 @@ export default function GlassmorphismTrustHero() {
         <AnimatedShaderHero />
       </div>
       {/* Layer 3: Glassmorphism content (main content) */}
-      <div className="relative z-20 mx-auto max-w-7xl px-4 pt-24 pb-12 sm:px-6 md:pt-32 md:pb-20 lg:px-8">
+      <div className="relative z-20 mx-auto max-w-7xl px-4 pt-24 pb-18 sm:px-6 md:pt-32 md:pb-20 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-start">
           {/* ...existing content... */}
           {/* --- LEFT COLUMN --- */}

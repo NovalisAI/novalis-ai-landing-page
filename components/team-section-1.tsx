@@ -75,7 +75,7 @@ export const TeamSection = React.forwardRef<HTMLDivElement, TeamSectionProps>(
           {/* Header Section */}
           <div className="relative z-10 flex w-full flex-col items-center justify-between gap-4 md:flex-row md:items-start md:text-left lg:gap-8">
             <div className="grid gap-2 text-center md:text-left">
-              <h1 className="text-4xl font-orbitron font-black tracking-tighter sm:text-5xl md:text-6xl text-white">
+              <h1 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-6xl text-white">
                 <span className="text-orange-500 block text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.4em] mb-2 font-mono">
                   THE MINDS BEHIND
                 </span>
@@ -91,9 +91,7 @@ export const TeamSection = React.forwardRef<HTMLDivElement, TeamSectionProps>(
             </div>
             <div className="flex flex-col items-center gap-4 md:items-end">
               {logo && (
-                <div className="text-2xl font-orbitron font-black text-white">
-                  {logo}
-                </div>
+                <div className="text-2xl font-black text-white">{logo}</div>
               )}
               {registerLink && (
                 <a
@@ -146,7 +144,7 @@ export const TeamSection = React.forwardRef<HTMLDivElement, TeamSectionProps>(
                 </div>
 
                 <div className="relative z-10 mt-6 transform transition-transform duration-500 group-hover:-translate-y-1">
-                  <h3 className="text-2xl font-orbitron font-black text-white tracking-tight leading-none">
+                  <h3 className="text-2xl font-black text-white tracking-tight leading-none">
                     {member.name}
                   </h3>
                   <div className="mt-2 h-0.5 w-12 bg-orange-500 mx-auto transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />

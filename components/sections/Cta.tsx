@@ -28,7 +28,7 @@ export default function Cta() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-5xl md:text-7xl font-orbitron font-black text-white text-center mb-8 tracking-tighter"
+          className="text-5xl md:text-7xl font-black text-white text-center mb-8 tracking-tighter"
         >
           BUILD <span className="text-orange-500">AWESOME</span> APPS <br />
           WITH NOVALIS{" "}

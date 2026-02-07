@@ -66,7 +66,7 @@ export default function AboutUsSection() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.3, ease: "easeOut" },
     },
   };
 
@@ -167,7 +167,7 @@ export default function AboutUsSection() {
           opacity: [0.5, 1, 0.5],
         }}
         transition={{
-          duration: 3,
+          duration: 1.5,
           repeat: Number.POSITIVE_INFINITY,
           ease: "easeInOut",
         }}
@@ -179,7 +179,7 @@ export default function AboutUsSection() {
           opacity: [0.5, 1, 0.5],
         }}
         transition={{
-          duration: 4,
+          duration: 2,
           repeat: Number.POSITIVE_INFINITY,
           ease: "easeInOut",
           delay: 1,
@@ -517,26 +517,26 @@ function StatCounter({
     <motion.div
       className={
         dark
-          ? "bg-white/5 border border-white/10 text-white p-6 rounded-2xl flex flex-col items-center text-center group hover:bg-white/10 transition-all duration-500 shadow-2xl backdrop-blur-xl"
-          : "bg-white/50 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center text-center group hover:bg-white transition-colors duration-300"
+          ? "bg-white/5 border border-white/10 text-white p-6 rounded-2xl flex flex-col items-center text-center group hover:bg-white/10 transition-all duration-250 shadow-2xl backdrop-blur-xl"
+          : "bg-white/50 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center text-center group hover:bg-white transition-colors duration-150"
       }
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.6, delay },
+          transition: { duration: 0.3, delay },
         },
       }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      whileHover={{ y: -5, transition: { duration: 0.1 } }}
     >
       <motion.div
         className={
           dark
-            ? "w-14 h-14 rounded-full bg-orange-500/10 flex items-center justify-center mb-4 text-orange-500 group-hover:bg-orange-500/20 transition-colors duration-300 border border-orange-500/20"
-            : "w-14 h-14 rounded-full bg-orange-500/5 flex items-center justify-center mb-4 text-orange-500 group-hover:bg-orange-500/10 transition-colors duration-300"
+            ? "w-14 h-14 rounded-full bg-orange-500/10 flex items-center justify-center mb-4 text-orange-500 group-hover:bg-orange-500/20 transition-colors duration-150 border border-orange-500/20"
+            : "w-14 h-14 rounded-full bg-orange-500/5 flex items-center justify-center mb-4 text-orange-500 group-hover:bg-orange-500/10 transition-colors duration-150"
         }
-        whileHover={{ rotate: 360, transition: { duration: 0.8 } }}
+        whileHover={{ rotate: 360, transition: { duration: 0.4 } }}
       >
         {icon}
       </motion.div>
@@ -563,8 +563,8 @@ function StatCounter({
       <motion.div
         className={
           dark
-            ? "w-10 h-0.5 bg-linear-to-r from-orange-500 to-yellow-500 mt-4 group-hover:w-16 transition-all duration-500"
-            : "w-10 h-0.5 bg-orange-500 mt-3 group-hover:w-16 transition-all duration-300"
+            ? "w-10 h-0.5 bg-linear-to-r from-orange-500 to-yellow-500 mt-4 group-hover:w-16 transition-all duration-250"
+            : "w-10 h-0.5 bg-orange-500 mt-3 group-hover:w-16 transition-all duration-150"
         }
       />
     </motion.div>

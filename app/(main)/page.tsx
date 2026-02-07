@@ -115,30 +115,30 @@ export default function Home() {
                 description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
                 members={[
                   {
-                    name: "EMMA",
+                    name: "Monsieur AS",
                     designation: "Product Designer",
                     imageSrc:
-                      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Example image for Emma
+                      "https://avatars.githubusercontent.com/u/96486453?v=4",
                     socialLinks: [
                       { icon: Twitter, href: "#" },
                       { icon: Linkedin, href: "#" },
                     ],
                   },
                   {
-                    name: "HENRY",
+                    name: "Monsieur JC",
                     designation: "Lead Developer",
                     imageSrc:
-                      "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Example image for Henry
+                      "https://avatars.githubusercontent.com/u/96486453?v=4",
                     socialLinks: [
                       { icon: Github, href: "#" },
                       { icon: Twitter, href: "#" },
                     ],
                   },
                   {
-                    name: "JOHN",
+                    name: "Monsieur RK",
                     designation: "Marketing Specialist",
                     imageSrc:
-                      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Example image for John
+                      "https://avatars.githubusercontent.com/u/96486453?v=4",
                     socialLinks: [
                       { icon: Facebook, href: "#" },
                       { icon: Instagram, href: "#" },

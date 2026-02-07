@@ -55,6 +55,27 @@ const companyStats = [
   { label: "Success Rate", value: "99.9%", icon: Zap },
 ];
 
+const starField = [
+  { top: "12%", left: "18%", size: 2, delay: 0.1, duration: 2.2 },
+  { top: "18%", left: "68%", size: 3, delay: 0.4, duration: 3.1 },
+  { top: "26%", left: "42%", size: 2, delay: 0.2, duration: 2.6 },
+  { top: "32%", left: "82%", size: 1, delay: 0.6, duration: 2.8 },
+  { top: "38%", left: "24%", size: 2, delay: 0.3, duration: 2.4 },
+  { top: "44%", left: "56%", size: 3, delay: 0.5, duration: 3.3 },
+  { top: "52%", left: "14%", size: 1, delay: 0.7, duration: 2.1 },
+  { top: "58%", left: "74%", size: 2, delay: 0.4, duration: 2.7 },
+  { top: "64%", left: "36%", size: 1, delay: 0.8, duration: 2.5 },
+  { top: "70%", left: "88%", size: 2, delay: 0.5, duration: 3.0 },
+  { top: "76%", left: "52%", size: 3, delay: 0.2, duration: 2.9 },
+  { top: "82%", left: "26%", size: 2, delay: 0.6, duration: 2.3 },
+  { top: "20%", left: "90%", size: 1, delay: 0.9, duration: 2.4 },
+  { top: "46%", left: "6%", size: 2, delay: 0.3, duration: 3.1 },
+  { top: "60%", left: "62%", size: 1, delay: 0.7, duration: 2.6 },
+  { top: "28%", left: "8%", size: 2, delay: 0.4, duration: 2.7 },
+  { top: "74%", left: "10%", size: 3, delay: 0.5, duration: 3.2 },
+  { top: "86%", left: "78%", size: 2, delay: 0.6, duration: 2.8 },
+];
+
 export function PremiumContact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -133,6 +154,81 @@ export function PremiumContact() {
 
   return (
     <section className="relative py-32 bg-gradient-to-br from-black via-indigo-950/20 to-black text-white overflow-hidden">
+      <AnimatePresence>
+        {isSubmitting && (
+          <motion.div
+            key="loading-overlay"
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/80 backdrop-blur-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,63,0.08),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(232,128,1,0.16),transparent_55%)]" />
+              {starField.map((star, index) => (
+                <motion.span
+                  key={`star-${index}`}
+                  className="absolute rounded-full bg-white"
+                  style={{
+                    top: star.top,
+                    left: star.left,
+                    width: `${star.size}px`,
+                    height: `${star.size}px`,
+                  }}
+                  animate={{ opacity: [0.2, 1, 0.3], scale: [1, 1.6, 1] }}
+                  transition={{
+                    duration: star.duration,
+                    delay: star.delay,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
+              <motion.div
+                className="absolute -top-12 right-8 h-24 w-24 rounded-full bg-novalis-yellow/20 blur-2xl"
+                animate={{ y: [0, 18, 0], opacity: [0.4, 0.9, 0.4] }}
+                transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute bottom-12 left-8 h-28 w-28 rounded-full bg-novalis-orange/20 blur-2xl"
+                animate={{ y: [0, -20, 0], opacity: [0.3, 0.85, 0.3] }}
+                transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
+
+            <motion.div
+              className="relative z-10 flex flex-col items-center gap-6 rounded-3xl border border-white/10 bg-white/5 px-10 py-8 text-center shadow-2xl backdrop-blur-xl"
+              initial={{ scale: 0.9, y: 10, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 160, damping: 18 }}
+            >
+              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.5em] text-novalis-yellow/80">
+                <Sparkles className="h-4 w-4 text-novalis-yellow" />
+                Novalis
+              </div>
+              <motion.div
+                className="relative flex h-14 w-14 items-center justify-center"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              >
+                <div className="absolute inset-0 rounded-full border border-white/20" />
+                <div className="absolute inset-2 rounded-full border border-novalis-yellow/50" />
+                <div className="h-3 w-3 rounded-full bg-novalis-orange shadow-glow" />
+              </motion.div>
+              <div className="space-y-2">
+                <p className="text-xl font-semibold text-white">
+                  Envoi en cours
+                </p>
+                <p className="text-sm text-zinc-400">
+                  Chargement des etoiles Novalis...
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0">
         {/* Animated gradient mesh */}

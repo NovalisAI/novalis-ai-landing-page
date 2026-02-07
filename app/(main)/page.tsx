@@ -38,18 +38,16 @@ import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a] text-white font-sans overflow-hidden">
+    <div className="">
       <Navbar />
 
-      <div className="min-h-screen text-white">
+      <div className="">
         {/* <SiteHeader /> */}
         <main>
           {/* <Hero /> */}
           <GlassmorphismTrustHero />
           {/* <ServicesBento /> */}
-
           <AboutUsSection />
-
           <ProcessSection
             subtitle="Our Model"
             title="How We Do It"
@@ -143,7 +141,6 @@ export default function Home() {
           </div>
           {/* <EarbudShowcase /> */}
           <Cta />
-
           <ThreeDMarquee images={images} />
         </main>
         <HoverFooter />

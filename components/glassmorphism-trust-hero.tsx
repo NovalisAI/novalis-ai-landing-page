@@ -13,7 +13,8 @@ import {
   Gem,
   Cpu,
 } from "lucide-react";
-import ShaderHero from "./animated-shader-hero";
+import ResponsiveHeroBanner from "./responsive-hero-banner";
+import AnimatedShaderHero from "./animated-shader-hero";
 
 // --- MOCK BRANDS ---
 // Replaced PNGs with Lucide icons to simulate tech logos
@@ -39,10 +40,9 @@ const StatItem = ({ value, label }: { value: string; label: string }) => (
 // --- MAIN COMPONENT ---
 export default function GlassmorphismTrustHero() {
   return (
-    <div className="relative w-full bg-zinc-950 text-white overflow-hidden font-sans">
-      {/* 
-        SCOPED ANIMATIONS 
-      */}
+    <div className="relative w-full text-white font-sans">
+      {/* Ensure no background color on wrapper so image shows */}
+      {/* SCOPED ANIMATIONS */}
       <style>{`
         @keyframes fadeSlideIn {
           from { opacity: 0; transform: translateY(20px); }
@@ -66,25 +66,15 @@ export default function GlassmorphismTrustHero() {
         .delay-500 { animation-delay: 0.5s; }
       `}</style>
 
-      {/* Background Image with Gradient Mask */}
-      <div className="border-4 border-red-400/50 rounded-3xl overflow-hidden absolute inset-0">
-        <ShaderHero />
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        <AnimatedShaderHero />
       </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-24 pb-12 sm:px-6 md:pt-32 md:pb-20 lg:px-8">
+      {/* Layer 3: Glassmorphism content (main content) */}
+      <div className="relative z-20 mx-auto max-w-7xl px-4 pt-24 pb-12 sm:px-6 md:pt-32 md:pb-20 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-start">
+          {/* ...existing content... */}
           {/* --- LEFT COLUMN --- */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-8 pt-8">
-            {/* Badge */}
-            <div className="animate-fade-in delay-100">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 backdrop-blur-md transition-colors hover:bg-white/10">
-                <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-2">
-                  Award-Winning Design
-                  <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
-                </span>
-              </div>
-            </div>
-
             {/* Heading */}
             <h1
               className="animate-fade-in delay-200 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tighter leading-[0.9]"
@@ -95,9 +85,9 @@ export default function GlassmorphismTrustHero() {
                   "linear-gradient(180deg, black 0%, black 80%, transparent 100%)",
               }}
             >
-              Crafting Digital
+              Novalis AI
               <br />
-              <span className="bg-gradient-to-br from-white via-white to-[#ffcd75] bg-clip-text text-transparent">
+              <span className="bg-linear-to-br from-white via-white to-[#ffcd75] bg-clip-text text-transparent">
                 Experiences
               </span>
               <br />

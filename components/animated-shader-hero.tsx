@@ -1,15 +1,13 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 
-// Types for component props
 interface HeroProps {
   className?: string;
 }
 
-// Reusable Shader Background Hook
 const useShaderBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number>(0);
   const rendererRef = useRef<WebGLRenderer | null>(null);
   const pointersRef = useRef<PointerHandler | null>(null);
 
@@ -336,9 +334,7 @@ const ShaderHero: React.FC<HeroProps> = ({ className = "" }) => {
   const canvasRef = useShaderBackground();
 
   return (
-    <div
-      className={`relative w-full h-screen overflow-hidden bg-black ${className}`}
-    >
+    <div className={`relative w-full h-screen ${className}`}>
       <style jsx>{`
         @keyframes fade-in-down {
           from {
@@ -407,80 +403,58 @@ const ShaderHero: React.FC<HeroProps> = ({ className = "" }) => {
 
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full object-contain touch-none"
-        style={{ background: "black" }}
+        className="absolute -top-1 inset-0 w-full h-full object-contain touch-none"
       />
     </div>
   );
 };
 
 const defaultShaderSource = `#version 300 es
-/*********
-* made by Matthias Hurrle (@atzedent)
-*
-*	To explore strange new worlds, to seek out new life
-*	and new civilizations, to boldly go where no man has
-*	gone before.
-*/
 precision highp float;
 out vec4 O;
 uniform vec2 resolution;
 uniform float time;
-#define FC gl_FragCoord.xy
+
 #define T time
 #define R resolution
-#define MN min(R.x,R.y)
-// Returns a pseudo random number for a given point (white noise)
-float rnd(vec2 p) {
-  p=fract(p*vec2(12.9898,78.233));
-  p+=dot(p,p+34.56);
-  return fract(p.x*p.y);
+
+float noise(vec2 p) {
+    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
 }
-// Returns a pseudo random number for a given point (value noise)
-float noise(in vec2 p) {
-  vec2 i=floor(p), f=fract(p), u=f*f*(3.-2.*f);
-  float
-  a=rnd(i),
-  b=rnd(i+vec2(1,0)),
-  c=rnd(i+vec2(0,1)),
-  d=rnd(i+1.);
-  return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);
+
+float softNoise(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    f = f * f * (3.0 - 2.0 * f);
+    float a = noise(i);
+    float b = noise(i + vec2(1.0, 0.0));
+    float c = noise(i + vec2(0.0, 1.0));
+    float d = noise(i + vec2(1.0, 1.0));
+    return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
 }
-// Returns a pseudo random number for a given point (fractal noise)
-float fbm(vec2 p) {
-  float t=.0, a=1.; mat2 m=mat2(1.,-.5,.2,1.2);
-  for (int i=0; i<5; i++) {
-    t+=a*noise(p);
-    p*=2.*m;
-    a*=.5;
-  }
-  return t;
-}
-float clouds(vec2 p) {
-	float d=1., t=.0;
-	for (float i=.0; i<3.; i++) {
-		float a=d*fbm(i*10.+p.x*.2+.2*(1.+i)*p.y+d+i*i+p);
-		t=mix(t,d,a);
-		d=a;
-		p*=2./(i+1.);
-	}
-	return t;
-}
+
 void main(void) {
-	vec2 uv=(FC-.5*R)/MN,st=uv*vec2(2,1);
-	vec3 col=vec3(0);
-	float bg=clouds(vec2(st.x+T*.5,-st.y));
-	uv*=1.-.3*(sin(T*.2)*.5+.5);
-	for (float i=1.; i<12.; i++) {
-		uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
-		vec2 p=uv;
-		float d=length(p);
-		col+=.00125/d*(cos(sin(i)*vec3(1,2,3))+1.);
-		float b=noise(i+p+bg*1.731);
-		col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
-		col=mix(col,vec3(bg*.25,bg*.137,bg*.05),d);
-	}
-	O=vec4(col,1);
+    vec2 uv = (gl_FragCoord.xy - 0.5 * R) / min(R.x, R.y);
+    float d = length(uv);
+
+    vec3 orange = vec3(0.91, 0.50, 0.004); // #E88001
+    vec3 yellow = vec3(1.0, 1.0, 0.247);    // #FFFF3F
+    vec3 black = vec3(0.0, 0.0, 0.0);       // Noir profond
+    float radius = 0.26; // Taille du disque noir
+    
+    float angle = atan(uv.y, uv.x);
+    float corona = softNoise(vec2(angle * 3.0 + T * 0.2, d - T * 0.4));
+    corona += softNoise(vec2(angle * 5.0 - T * 0.3, d * 2.0 + T * 0.2)) * 0.5;
+    float glow = 0.02 / abs(d - radius);
+    glow = pow(glow, 1.1) * corona;
+    vec3 finalCol = mix(orange, yellow, glow * 0.5) * glow;
+    float mask = smoothstep(radius, radius + 0.005, d);
+    vec3 finalImage = mix(black, finalCol, mask);
+
+    float diamond = 0.001 / length(uv - vec2(0.18, -0.18)); 
+    finalImage += diamond * yellow * mask;
+
+    O = vec4(finalImage, 1.0);
 }`;
 
 export default ShaderHero;

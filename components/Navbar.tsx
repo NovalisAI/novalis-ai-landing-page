@@ -94,7 +94,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-20
+      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-300
                        flex flex-col items-center
                        pl-6 pr-6 py-3 backdrop-blur-sm
                        ${headerShapeClass}

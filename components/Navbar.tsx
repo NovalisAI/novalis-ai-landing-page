@@ -9,14 +9,14 @@ const AnimatedNavLink = ({
   href: string;
   children: React.ReactNode;
 }) => {
-  const defaultTextColor = "text-white/60";
-  const hoverTextColor = "text-orange-500";
-  const textSizeClass = "text-xs uppercase tracking-widest font-bold";
+  const defaultTextColor = "text-gray-700";
+  const hoverTextColor = "text-black";
+  const textSizeClass = "text-sm";
 
   return (
     <a
       href={href}
-      className={`group relative inline-block overflow-hidden h-5 items-center ${textSizeClass}`}
+      className={`group relative inline-block overflow-hidden h-5 flex items-center ${textSizeClass}`}
     >
       <div className="flex flex-col transition-transform duration-400 ease-out transform group-hover:-translate-y-1/2">
         <span className={defaultTextColor}>{children}</span>
@@ -56,58 +56,51 @@ export default function Navbar() {
   }, [isOpen]);
 
   const logoElement = (
-    <div className="flex items-center gap-3 group cursor-pointer">
-      {/* Logo Image Placeholder */}
-
-      {/* Text Logo */}
-      <div className="flex flex-col -space-y-1">
-        <span className="text-xl font-black tracking-tight text-white leading-none">
-          NOVALIS{" "}
-          <span className="bg-linear-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
-            AI
-          </span>
-        </span>
-      </div>
+    <div className="relative w-5 h-5 flex items-center justify-center">
+      <span className="absolute w-1.5 h-1.5 rounded-full bg-yellow-400 top-0 left-1/2 transform -translate-x-1/2 opacity-80"></span>
+      <span className="absolute w-1.5 h-1.5 rounded-full bg-yellow-400 left-0 top-1/2 transform -translate-y-1/2 opacity-80"></span>
+      <span className="absolute w-1.5 h-1.5 rounded-full bg-yellow-400 right-0 top-1/2 transform -translate-y-1/2 opacity-80"></span>
+      <span className="absolute w-1.5 h-1.5 rounded-full bg-yellow-400 bottom-0 left-1/2 transform -translate-x-1/2 opacity-80"></span>
     </div>
   );
 
   const navLinksData = [
-    { label: "About Us", href: "#1" },
+    { label: "Manifesto", href: "#1" },
     { label: "Careers", href: "#2" },
     { label: "Discover", href: "#3" },
   ];
 
   const loginButtonElement = (
-    <button className="px-5 py-2 sm:px-4 text-xs font-bold border border-white/10 bg-white/5 text-white/80 rounded-full hover:border-orange-500/50 hover:text-white transition-all duration-300 w-full sm:w-auto backdrop-blur-md">
-      LOG IN
+    <button className="px-4 py-2 sm:px-3 text-xs sm:text-sm border border-gray-300 bg-white text-gray-700 rounded-full hover:border-yellow-400 hover:text-black transition-colors duration-200 w-full sm:w-auto">
+      LogIn
     </button>
   );
 
   const signupButtonElement = (
     <div className="relative group w-full sm:w-auto">
       <div
-        className="absolute inset-0 -m-1 rounded-full
+        className="absolute inset-0 -m-2 rounded-full
                      hidden sm:block
-                     bg-orange-500
-                     opacity-20 filter blur-md pointer-events-none
+                     bg-yellow-200
+                     opacity-40 filter blur-lg pointer-events-none
                      transition-all duration-300 ease-out
-                     group-hover:opacity-40 group-hover:blur-lg"
+                     group-hover:opacity-60 group-hover:blur-xl group-hover:-m-3"
       ></div>
-      <button className="relative z-10 px-5 py-2 sm:px-4 text-xs font-black text-white bg-orange-500 rounded-full hover:scale-105 transition-all duration-300 w-full sm:w-auto">
-        SIGN UP
+      <button className="relative z-10 px-4 py-2 sm:px-3 text-xs sm:text-sm font-semibold text-black bg-gradient-to-br from-yellow-200 to-yellow-400 rounded-full hover:from-yellow-300 hover:to-yellow-500 transition-all duration-200 w-full sm:w-auto">
+        Signup
       </button>
     </div>
   );
 
   return (
     <header
-      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-300
+      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-20
                        flex flex-col items-center
-                       pl-6 pr-6 py-3 backdrop-blur-xl
+                       pl-6 pr-6 py-3 backdrop-blur-sm
                        ${headerShapeClass}
-                       border border-white/10 bg-black/60
+                       border border-gray-200 bg-white/90
                        w-[calc(100%-2rem)] sm:w-auto
-                       transition-[border-radius] duration-300 ease-in-out shadow-2xl`}
+                       transition-[border-radius] duration-0 ease-in-out`}
     >
       <div className="flex items-center justify-between w-full gap-x-6 sm:gap-x-8">
         <div className="flex items-center">{logoElement}</div>
@@ -126,7 +119,7 @@ export default function Navbar() {
         </div>
 
         <button
-          className="sm:hidden flex items-center justify-center w-8 h-8 text-gray-300 focus:outline-none"
+          className="sm:hidden flex items-center justify-center w-8 h-8 text-gray-700 focus:outline-none"
           onClick={toggleMenu}
           aria-label={isOpen ? "Close Menu" : "Open Menu"}
         >
@@ -173,7 +166,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-gray-300 hover:text-white transition-colors w-full text-center"
+              className="text-gray-700 hover:text-black transition-colors w-full text-center"
             >
               {link.label}
             </a>

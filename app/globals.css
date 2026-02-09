@@ -157,6 +157,14 @@
       transform: translateY(0);
     }
   }
+  @keyframes x-slider {
+  0% {
+    transform: translateX(0%);
+    }
+  100% {
+    transform: translateX(calc(-50% - 1.25rem));
+    }
+  }
 }
 
 * {
@@ -168,29 +176,11 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(232, 128, 1, 0.18),
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 30% 40%,
-      rgba(255, 255, 63, 0.12),
-      transparent 55%
-    ),
-    #050505;
   font-family:
     var(--font-sans),
     system-ui,
     -apple-system,
     sans-serif;
-  min-height: 100vh;
-}
-
-::selection {
-  background: rgba(232, 128, 1, 0.45);
-  color: #050505;
 }
 
 .dark {
